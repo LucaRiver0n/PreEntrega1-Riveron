@@ -23,7 +23,7 @@ do {
     } else if (cuotas > 100000) {
         alert("El monto máximo a solicitar es 100.000 USD");
     } else {
-        break; // Sale del bucle si el monto es válido
+        break; 
     }
 } while (true);
 
