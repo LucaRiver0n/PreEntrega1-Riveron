@@ -1,55 +1,38 @@
-function dividir(cuotas, meses){
-    return cuotas / meses;
-}
+// Variables
+  let numbers = [];
+  let total = 0;
 
-let cuotas = 1;
-let meses = 0;
-let resultado = parseInt(0);
+  // Solicitar números al usuario
+  let cantidadNumeros = parseInt(prompt("¿Cuántos números deseas ingresar?"))
 
-// PREGUNTAR SOBRE CUANTO DINERO VA A SOLICITAR ----------
-do {
-    let inputCuotas = prompt("Ingrese el monto a solicitar (en USD)");
-    
-    if (inputCuotas === null) {
-        continue; 
-    }
+  for (let i = 0; i < cantidadNumeros; i++) {
+    let numero = parseFloat(prompt(`Ingrese el número ${i + 1}:`))
+    numbers.push(numero);
+  }
 
-    cuotas = parseInt(inputCuotas);
+  function sumarNumeros(arr) {
+    return arr.reduce((acc, curr) => acc + curr, 0)
+  }
 
-    if (isNaN(cuotas) || cuotas < 0) {
-        alert("Por favor, ingrese un monto válido mayor o igual a 0.");
-    } else if (cuotas < 1000) {
-        alert("El monto mínimo a solicitar es 1.000 USD");
-    } else if (cuotas > 100000) {
-        alert("El monto máximo a solicitar es 100.000 USD");
-    } else {
-        break; 
-    }
-} while (true);
+  function encontrarMayor(arr) {
+    return Math.max(...arr)
+  }
 
-// PREGUNTAR SOBRE CUANTOS MESES VA A PAGAR ---------------
-do {
-    let inputMeses = prompt("Ingrese el número de meses en los que pagará el préstamo");
+  function filtrarPares(arr) {
+    return arr.filter(num => num % 2 === 0)
+  }
 
-    if (inputMeses === null) {
-        continue; 
-    }
+  total = sumarNumeros(numbers)
+  let mayorNumero = encontrarMayor(numbers)
+  let numerosPares = filtrarPares(numbers)
 
-    meses = parseInt(inputMeses);
-
-    if (isNaN(meses) || meses < 0) {
-        alert("Por favor, ingrese un número de meses válido mayor o igual a 0.");
-    } else if (meses < 3) {
-        alert("El número mínimo de meses es 3.");
-    } else if (meses > 69) {
-        alert("El número máximo de meses es 69.");
-    } else {
-        break; 
-    }
-} while (true);
+  document.write(`<p>Los números ingresados son: ${numbers.join(', ')}</p>`)
+  document.write(`<p>La suma de los números es: ${total}</p>`)
+  document.write(`<p>El mayor número es: ${mayorNumero}</p>`)
+  document.write(`<p>Los números pares son: ${numerosPares.join(', ')}</p>`)
 
 
-resultado = dividir(cuotas, meses);
-resultado = Math.floor(resultado);
 
-alert("Solicitando " + cuotas + " a " + meses + " meses, tendrás que pagar mensualmente " + resultado + " USD");
+
+
+
