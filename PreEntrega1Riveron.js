@@ -1,8 +1,7 @@
-// Variables
+
   let numbers = [];
   let total = 0;
 
-  // Solicitar números al usuario
   let cantidadNumeros = parseInt(prompt("¿Cuántos números deseas ingresar?"))
 
   for (let i = 0; i < cantidadNumeros; i++) {
