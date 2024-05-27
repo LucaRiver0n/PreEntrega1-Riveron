@@ -1,35 +1,66 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const botonesAñadirCarrito = document.querySelectorAll('.añadir-carrito');
+  const listaCarrito = document.getElementById('lista-carrito');
+  const totalElement = document.getElementById('total');
+  const botonComprar = document.getElementById('comprar');
 
-  let numbers = [];
-  let total = 0;
+  // Cargar carrito desde el localStorage
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  actualizarCarrito();
 
-  let cantidadNumeros = parseInt(prompt("¿Cuántos números deseas ingresar?"))
+  botonesAñadirCarrito.forEach(boton => {
+      boton.addEventListener('click', añadirAlCarrito);
+  });
 
-  for (let i = 0; i < cantidadNumeros; i++) {
-    let numero = parseFloat(prompt(`Ingrese el número ${i + 1}:`))
-    numbers.push(numero);
+  botonComprar.addEventListener('click', comprar);
+
+  function añadirAlCarrito(event) {
+      const boton = event.target;
+      const producto = boton.closest('.producto');
+      const idProducto = producto.getAttribute('data-id');
+      const nombreProducto = producto.getAttribute('data-nombre');
+      const precioProducto = parseFloat(producto.getAttribute('data-precio'));
+
+      const productoEnCarrito = carrito.find(item => item.id === idProducto);
+      if (productoEnCarrito) {
+          productoEnCarrito.cantidad++;
+      } else {
+          carrito.push({ id: idProducto, nombre: nombreProducto, precio: precioProducto, cantidad: 1 });
+      }
+
+      actualizarCarrito();
+      guardarCarrito();
   }
 
-  function sumarNumeros(arr) {
-    return arr.reduce((acc, curr) => acc + curr, 0)
+  function actualizarCarrito() {
+      listaCarrito.innerHTML = '';
+      let total = 0;
+
+      carrito.forEach(producto => {
+          const li = document.createElement('li');
+          li.textContent = `${producto.nombre} - $${producto.precio} x ${producto.cantidad}`;
+          listaCarrito.appendChild(li);
+          total += producto.precio * producto.cantidad;
+      });
+
+      totalElement.textContent = `Total: $${total}`;
   }
 
-  function encontrarMayor(arr) {
-    return Math.max(...arr)
+  function guardarCarrito() {
+      localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
-  function filtrarPares(arr) {
-    return arr.filter(num => num % 2 === 0)
+  function comprar() {
+      if (carrito.length === 0) {
+          alert('El carrito está vacío.');
+      } else {
+          alert('Compra realizada con éxito.');
+          carrito.length = 0; // Vaciar el carrito
+          actualizarCarrito();
+          guardarCarrito();
+      }
   }
-
-  total = sumarNumeros(numbers)
-  let mayorNumero = encontrarMayor(numbers)
-  let numerosPares = filtrarPares(numbers)
-
-  document.write(`<p>Los números ingresados son: ${numbers.join(', ')}</p>`)
-  document.write(`<p>La suma de los números es: ${total}</p>`)
-  document.write(`<p>El mayor número es: ${mayorNumero}</p>`)
-  document.write(`<p>Los números pares son: ${numerosPares.join(', ')}</p>`)
-
+});
 
 
 
