@@ -1,41 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Ropa</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a Nuestra Tienda</h1>
-    </header>
-    <main>
-        <section id="productos">
-            <h2>Productos</h2>
-            <div class="producto" data-id="1" data-nombre="Producto 1" data-precio="10">
-                <h3>Producto 1</h3>
-                <p>Descripción del producto 1</p>
-                <p>Precio: $10</p>
-                <button class="añadir-carrito">Añadir al Carrito</button>
-            </div>
-            <div class="producto" data-id="2" data-nombre="Producto 2" data-precio="20">
-                <h3>Producto 2</h3>
-                <p>Descripción del producto 2</p>
-                <p>Precio: $20</p>
-                <button class="añadir-carrito">Añadir al Carrito</button>
-            </div>
-            <!-- Puedes añadir más productos aquí -->
-        </section>
-        <section id="carrito">
-            <h2>Carrito de Compras</h2>
-            <ul id="lista-carrito">
-                <!-- Los productos añadidos aparecerán aquí -->
-            </ul>
-            <p id="total">Total: $0</p>
-            <button id="comprar">Comprar</button>
-        </section>
-    </main>
-    <script src="./PreEntrega1Riveron.js"></script>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="ProyectoFinal-Riveron.js" type="text/babel"></script>
 </body>
 </html>
