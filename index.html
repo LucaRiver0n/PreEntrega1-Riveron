@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda de Ropa de Luca</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script src="ProyectoFinal-Riveron.js" type="text/babel"></script>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <input type="text" id="new-task" placeholder="Nueva tarea">
+        <button id="add-task">Agregar</button>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
